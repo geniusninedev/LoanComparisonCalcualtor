@@ -13,4 +13,12 @@
     <string name="fb_login_protocol_scheme">fb267933240296176</string>
     <string name="action_logout">Logout</string>
     <string name="web_address">https://geniusnineapps.azurewebsites.net</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-6819279779322408/7526634571</string>
+    <string name="ads_app_id">ca-app-pub-6819279779322408~6049901378</string>
+    <string name="loading">Loading</string>
+    <string name="googleloginText">Sign In</string>
+    <string name="facebook_data">FacebookUser</string>
+    <string name="email_data">EmailUser</string>
+    <string name="google_data">GoogleUser</string>
 </resources>
