@@ -5,8 +5,8 @@
     <group android:id="@+id/grp1" android:checkableBehavior="single" >
         <item
             android:id="@+id/LoanComparisonCalculator"
-            android:icon="@drawable/ic_loan"
-            android:title="Loan Calculator" />
+            android:icon="@drawable/ic_comparison1"
+            android:title="Loan Comparison Calculator" />
     </group>
 
 

@@ -757,7 +757,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                             alertpropertyprice = Integer.parseInt(editTextalertpropertyprice.getText().toString());
                             alertdownpayment = Integer.parseInt(edittextalertdownpayment.getText().toString());
                             String alertspinnertax = spinneralerttaxtype.getSelectedItem().toString().trim();
-                            //  Toast.makeText(this, "" + alertspinnertax, Toast.LENGTH_SHORT).show();
+
                             if (alertspinnertax == "Amount") {
                                 alerttoatalLoanAmount = alertpropertyprice - alertdownpayment;
 
