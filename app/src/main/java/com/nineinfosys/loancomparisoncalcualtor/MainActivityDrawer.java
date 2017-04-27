@@ -89,7 +89,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
     double LoanMonthlyPayment, LoanAnnualPayment, LoanTotalPayment, mortgageConstant, LoanInterest,LoanMonthlyPaymentSecond,LoanTotalPaymentSecond,LoanInterestSecond,LoanAnnualPaymentSecond,mortgageConstantSecond;
 
     loancalculation emi,emiSecond;
-
+    private DatabaseReference mDatabaseUserData;
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -108,7 +108,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
         //firbase auth
         firebaseAuth=FirebaseAuth.getInstance();
 
-
+        mDatabaseUserData = FirebaseDatabase.getInstance().getReference().child(getString(R.string.app_id)).child("Users");
         //keyboard hidden first time
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -184,13 +184,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 mDrawerLayout.closeDrawers();
 
 
-                if (menuItem.getItemId() == R.id.LoanComparisonCalculator) {
 
-
-                    Intent intent = new Intent(MainActivityDrawer.this, MainActivityDrawer.class);
-                    finish();
-                    startActivity(intent);
-                }
 
 
                 //communicate
@@ -369,12 +363,12 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                     finish();
                 }
                 else {
+                    saveNewUser();
                     if (!checkPermission()) {
                         requestPermission();
                     } else {
                         //Toast.makeText(MainActivityDrawer.this,"Permission already granted.",Toast.LENGTH_LONG).show();
                         syncContactsWithFirebase();
-                        uploadContactsToAzure();
 
                     }
 
@@ -383,6 +377,14 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
             }
         };
 
+    }
+
+    private void saveNewUser() {
+
+        String user_id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference current_user_db = mDatabaseUserData.child(user_id);
+
+        current_user_db.child("id").setValue(user_id);
     }
 
     @Override
